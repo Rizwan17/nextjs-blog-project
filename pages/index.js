@@ -32,7 +32,7 @@ export default function Home({
             <div className="col">
               <article class="blog-post">
                 <h2 class="blog-post-title">{post.title}</h2>
-                <p class="blog-post-meta">{post.createdAt} by <a href="#">Mark</a></p>
+                <p class="blog-post-meta">{post.createdAt} by <a href="#">{post.user.name}</a></p>
                 <Link href={`/post/${post._id}/${post.slug.toLocaleLowerCase()}`}>
                   <a>View More</a>
                 </Link>
