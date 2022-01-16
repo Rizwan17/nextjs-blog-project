@@ -10,3 +10,30 @@ export const signup = async (payload) => {
         return getValue(error, ["response", "data"]);
     }
 }
+
+export const createPost = async (form) => {
+    try{
+        const res = await axios.post(baseUrl + `/post/create`, form);
+        return res.data;
+    }catch(error){
+        return getValue(error, ["response", "data"]);
+    }
+}
+
+export const getAllPosts = async () => {
+    try{
+        const res = await axios.get(baseUrl + `/post`);
+        return res.data;
+    }catch(error){
+        return getValue(error, ["response", "data"]);
+    }
+}
+
+export const getSinglePost = async (id) => {
+    try{
+        const res = await axios.get(baseUrl + `/post/${id}`);
+        return res.data;
+    }catch(error){
+        return getValue(error, ["response", "data"]);
+    }
+}

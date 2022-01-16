@@ -56,9 +56,15 @@ const Header = (props) => {
               </svg>
             </a>
             {authenticated ? (
-              
+                <>
+                <Link href={`/post/create`}>
+                <a className="btn btn-sm btn-outline-secondary user-login-btn">
+                  Create
+                </a>
+                </Link>
+                
                 <a
-                  className="btn btn-sm btn-outline-secondary"
+                  className="btn btn-sm btn-outline-secondary user-login-btn"
                   href="#"
                   onClick={() => {
                     signout({
@@ -72,6 +78,7 @@ const Header = (props) => {
                 >
                   Logout
                 </a>
+                </>
             ) : (
               <>
                 <Link href={`/signup`}>

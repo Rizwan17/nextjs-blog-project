@@ -1,12 +1,17 @@
-export default function handler(req, res){
+import { dbConnect } from "../../../lib/db-connect";
+import Post from "../../../models/post";
+import { errorHandler, responseHandler } from "../../../utils/common";
 
-    // req.method => GET, POST, DELETE, PATCH, PUT
-
-    res.status(200).json([
-        {
-            id: 1,
-            name: 'Sachin',
-            email: 'sachin@gmail.com'
+export default async function handler(req, res){
+    try{
+        await dbConnect();
+        const posts = await Post.find({}).select('_id title slug image createdAt').exec();
+        if(posts){
+            responseHandler(posts, res);
+        }else{
+            errorHandler("Something went wrong", res);
         }
-    ])
+    }catch(error){
+        errorHandler(error, res);
+    }
 }
